@@ -1,0 +1,38 @@
+version: "3.3"
+
+networks:
+  opsflow:
+    driver: overlay
+    attachable: true
+
+services:
+
+  flow:
+    image: ##NodeRED:image 
+    volumes:
+      - /data/opsflow:/flows
+      - /data/opsflow/web:/web
+    ports:
+      - 1880:1880
+    networks:
+      - opsflow
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+      placement:
+        constraints:
+          - node.role == manager
+
+  web:
+    image: nginx:alpine
+    volumes:
+      - /data/opsflow/web:/usr/share/nginx/html
+    ports:
+      - 89:80
+    networks:
+      - opsflow
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
