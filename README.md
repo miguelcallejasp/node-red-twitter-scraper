@@ -17,3 +17,6 @@ Refer to [Slack Commands API](https://api.slack.com/slash-commands) for more inf
 ### Server side
 The server side uses Docker Engine to start up both a NodeRED container and a simple Nginx server to make a CSV file available for download. Change the URL used in the Slack Response node. Docker compose files are available in this repository. 
 
+### How it looks like
+
+![alt NODERed Screenshot](https://raw.githubusercontent.com/miguelcallejasp/node-red-twitter-scraper/master/twitterscrapper.png)
